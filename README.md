@@ -1,8 +1,20 @@
-# React + Vite
+# HackIllinois Time-Travel Scheduling App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a time-travel scheduling app built for HackIllinois 2024. It allows users to explore and view event details.
 
-Currently, two official plugins are available:
+![preview](https://s2.loli.net/2024/09/18/QrXqHCvtIiA74ZV.png)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
+
+- View event details
+- Time-travel to previous days
+- Add events to your calendar
+
+## Technologies Used
+
+- Vite & React
+- TailwindCSS
+- React Router
+- Axios
+- add-to-calendar-button-react
+- react-icons
