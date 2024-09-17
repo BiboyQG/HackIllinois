@@ -32,7 +32,7 @@ function DaySelector({ events, selectedDay, onDaySelect }) {
             <button
               key={day}
               className={`
-                w-6 h-6 sm:w-6 sm:h-6 rounded-full flex items-center justify-center text-xs sm:text-xs font-medium
+                w-6 h-6 sm:w-6 sm:h-6 rounded-full flex items-center justify-center text-xs sm:text-xs font-medium transition-all duration-300
                 ${hasEvent ? 'hover:bg-indigo-100 cursor-pointer' : 'cursor-default text-gray-400'}
                 ${isSelected ? 'bg-indigo-600 text-white' : 'bg-gray-100'}
                 ${hasEvent && !isSelected ? 'text-indigo-600' : ''}
