@@ -2,13 +2,14 @@ import { useParams, Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import AniCon from '../AniCon/AniCon';
 import { AddToCalendarButton } from 'add-to-calendar-button-react';
+import { FaCalendarAlt, FaClock, FaStar, FaBuilding, FaTag, FaSync } from 'react-icons/fa';
 
 function EventDetails({ events }) {
   const { eventId } = useParams();
   const event = events.find(e => e.eventId === eventId);
 
   if (!event) {
-    return <div>Event not found</div>;
+    return <div className="text-center text-2xl text-gray-600 mt-10">Event not found</div>;
   }
 
   // Format date and time for AddToCalendarButton
@@ -19,41 +20,42 @@ function EventDetails({ events }) {
 
   return (
     <AniCon>
-      <div className="solid-bg rounded-lg shadow-md p-6 max-w-2xl mx-auto">
-        <h2 className="text-2xl font-bold mb-4">{event.name}</h2>
-        <p className="text-gray-600 mb-4">{event.description}</p>
-        <div className="grid grid-cols-2 gap-4 mb-4">
-          <div>
-            <p><strong>Start Time:</strong> {new Date(event.startTime * 1000).toLocaleString()}</p>
-            <p><strong>End Time:</strong> {new Date(event.endTime * 1000).toLocaleString()}</p>
-            <p><strong>Points:</strong> {event.points}</p>
+      <div className="bg-white rounded-lg shadow-lg p-8 max-w-3xl mx-auto">
+        <h2 className="text-3xl font-bold mb-6 text-indigo-700">{event.name}</h2>
+        <p className="text-gray-600 mb-8 text-lg">{event.description}</p>
+        
+        <div className="grid md:grid-cols-2 gap-6 mb-8">
+          <div className="space-y-4">
+            <DetailItem icon={<FaCalendarAlt />} label="Date" value={startDate.toLocaleDateString()} />
+            <DetailItem icon={<FaClock />} label="Time" value={`${startDate.toLocaleTimeString()} - ${endDate.toLocaleTimeString()}`} />
+            <DetailItem icon={<FaStar />} label="Points" value={event.points} />
           </div>
-          <div>
-            <p><strong>Sponsor:</strong> {event.sponsor || 'N/A'}</p>
-            <p><strong>Event Type:</strong> {event.eventType}</p>
-            <p><strong>Async:</strong> {event.isAsync ? 'Yes' : 'No'}</p>
+          <div className="space-y-4">
+            <DetailItem icon={<FaBuilding />} label="Sponsor" value={event.sponsor || 'N/A'} />
+            <DetailItem icon={<FaTag />} label="Event Type" value={event.eventType} />
+            <DetailItem icon={<FaSync />} label="Async" value={event.isAsync ? 'Yes' : 'No'} />
           </div>
         </div>
+        
         {event.mapImageUrl && (
-          <img src={event.mapImageUrl} alt="Event Location Map" className="w-full mb-4 rounded-lg" />
+          <img src={event.mapImageUrl} alt="Event Location Map" className="w-full mb-8 rounded-lg shadow-md" />
         )}
-        <div className="flex flex-col items-center space-y-4">
-          <div className="w-full flex justify-center">
-            <AddToCalendarButton
-              className="transition-all duration-300"
-              name={event.name}
-              options={['Apple', 'Google', "Outlook.com"]}
-              location={event.location || 'TBA'}
-              startDate={formatDate(startDate)}
-              endDate={formatDate(endDate)}
-              startTime={formatTime(startDate)}
-              endTime={formatTime(endDate)}
-              timeZone="America/Los_Angeles"
-              trigger="click"
-              hideBackground={true}
-            />
-          </div>
-          <Link to="/" className="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700 text-center w-[185px] transition-all duration-300 shadow-md hover:shadow-lg">
+        
+        <div className="flex flex-col items-center space-y-6">
+          <AddToCalendarButton
+            className="transition-all duration-300 transform hover:scale-105"
+            name={event.name}
+            options={['Apple', 'Google', "Outlook.com"]}
+            location={event.location || 'TBA'}
+            startDate={formatDate(startDate)}
+            endDate={formatDate(endDate)}
+            startTime={formatTime(startDate)}
+            endTime={formatTime(endDate)}
+            timeZone="America/Los_Angeles"
+            trigger="click"
+            hideBackground={true}
+          />
+          <Link to="/" className="bg-indigo-600 text-white px-6 py-3 rounded-full hover:bg-indigo-700 text-center transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105">
             Return to Main Page
           </Link>
         </div>
@@ -61,6 +63,22 @@ function EventDetails({ events }) {
     </AniCon>
   );
 }
+
+function DetailItem({ icon, label, value }) {
+  return (
+    <div className="flex items-center space-x-3">
+      <span className="text-indigo-600">{icon}</span>
+      <span className="font-semibold">{label}:</span>
+      <span>{value}</span>
+    </div>
+  );
+}
+
+DetailItem.propTypes = {
+  icon: PropTypes.element.isRequired,
+  label: PropTypes.string.isRequired,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+};
 
 EventDetails.propTypes = {
   events: PropTypes.arrayOf(PropTypes.shape({
