@@ -26,14 +26,18 @@ function App() {
         <div className="py-8">
           <Routes>
             <Route path="/" element={
-              <>
-                <DaySelector 
-                  events={events} 
-                  selectedDay={selectedDay} 
-                  onDaySelect={setSelectedDay} 
-                />
-                <DayPage selectedDay={selectedDay} events={events} />
-              </>
+              <div className="flex">
+                <div className="w-[23%] pr-4">
+                  <DaySelector 
+                    events={events} 
+                    selectedDay={selectedDay} 
+                    onDaySelect={setSelectedDay} 
+                  />
+                </div>
+                <div className="w-[77%] pl-4">
+                  <DayPage selectedDay={selectedDay} events={events} />
+                </div>
+              </div>
             } />
             <Route path="/event/:eventId" element={<EventDetails events={events} />} />
           </Routes>
