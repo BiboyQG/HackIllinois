@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-function DaySelector({ events, selectedDay, onDaySelect }) {
+function DaySelector({ events, selectedDay, onDaySelect, currentMonth }) {
   const currentDate = new Date();
   const year = currentDate.getFullYear();
   const month = currentDate.getMonth();
@@ -17,7 +17,7 @@ function DaySelector({ events, selectedDay, onDaySelect }) {
 
   return (
     <div className="bg-white rounded-lg shadow-md p-4 mb-6">
-      <h2 className="text-xl font-semibold text-gray-800 mb-4">Select a Day</h2>
+      <h2 className="text-xl font-semibold text-gray-800 mb-4">{currentMonth}</h2>
       <div className="grid grid-cols-7 gap-2 sm:gap-4">
         {daysInMonth.map(day => {
           const hasEvent = events.some(event => new Date(event.startTime * 1000).getDate() === day);
@@ -55,6 +55,7 @@ DaySelector.propTypes = {
   })).isRequired,
   selectedDay: PropTypes.number.isRequired,
   onDaySelect: PropTypes.func.isRequired,
+  currentMonth: PropTypes.string.isRequired,
 };
 
 export default DaySelector;

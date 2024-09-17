@@ -7,6 +7,7 @@ import DayPage from './components/DayPage/DayPage';
 function App() {
   const [selectedDay, setSelectedDay] = useState(new Date().getDate());
   const [events, setEvents] = useState([]);
+  const currentMonth = new Date().toLocaleString('default', { month: 'long' });
 
   useEffect(() => {
     fetchEvents()
@@ -25,8 +26,9 @@ function App() {
           events={events} 
           selectedDay={selectedDay} 
           onDaySelect={setSelectedDay} 
+          currentMonth={currentMonth}
         />
-        <DayPage selectedDay={selectedDay} events={events} />
+        <DayPage selectedDay={selectedDay} events={events} currentMonth={currentMonth} />
       </div>
     </div>
   )
