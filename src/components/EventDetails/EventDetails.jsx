@@ -24,10 +24,10 @@ function EventDetails({ events }) {
         <h2 className="text-3xl font-bold mb-6 text-indigo-700">{event.name}</h2>
         <p className="text-gray-600 mb-8 text-lg">{event.description}</p>
         
-        <div className="grid md:grid-cols-2 gap-6 mb-8">
+        <div className="grid md:grid-cols-2 gap-2 mb-5">
           <div className="space-y-4">
             <DetailItem icon={<FaCalendarAlt />} label="Date" value={startDate.toLocaleDateString()} />
-            <DetailItem icon={<FaClock />} label="Time" value={`${startDate.toLocaleTimeString()} - ${endDate.toLocaleTimeString()}`} />
+            <DetailItem icon={<FaClock />} label="Time" value={`${startDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} - ${endDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`} />
             <DetailItem icon={<FaStar />} label="Points" value={event.points} />
           </div>
           <div className="space-y-4">
@@ -38,7 +38,7 @@ function EventDetails({ events }) {
         </div>
         
         {event.mapImageUrl && (
-          <img src={event.mapImageUrl} alt="Event Location Map" className="w-full mb-8 rounded-lg shadow-md" />
+          <img src={event.mapImageUrl} alt="Event Location Map" className="w-[80%] mb-5 mx-auto" />
         )}
         
         <div className="flex flex-col items-center space-y-6">
@@ -53,7 +53,6 @@ function EventDetails({ events }) {
             endTime={formatTime(endDate)}
             timeZone="America/Los_Angeles"
             trigger="click"
-            hideBackground={true}
           />
           <Link to="/" className="bg-indigo-600 text-white px-6 py-3 rounded-full hover:bg-indigo-700 text-center transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105">
             Return to Main Page
