@@ -1,41 +1,32 @@
 import { useState, useEffect } from 'react'
-import { fetchEvents, notifyFetchSuccess, notifyFetchFailure } from './utils';
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { fetchEvents, notifyFetchSuccess } from './utils';
 import './App.css'
+import DaySelector from './components/DaySelector/DaySelector';
+import DayPage from './components/DayPage/DayPage';
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [selectedDay, setSelectedDay] = useState(new Date().getDate());
+  const [events, setEvents] = useState([]);
 
   useEffect(() => {
     fetchEvents()
+      .then(
+        (data) => {
+          setEvents(data.events);
+        }
+      )
       .then(notifyFetchSuccess)
-      .catch(notifyFetchFailure);
   }, []);
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div className="app">
+      <DaySelector 
+        events={events} 
+        selectedDay={selectedDay} 
+        onDaySelect={setSelectedDay} 
+      />
+      <DayPage selectedDay={selectedDay} events={events} />
+    </div>
   )
 }
 
