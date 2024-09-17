@@ -2,8 +2,14 @@ import { Link } from 'react-router-dom';
 
 function NavBar() {
   return (
-    <nav className="fixed top-4 left-1/2 transform -translate-x-1/2 bg-white rounded-full shadow-lg transition-all duration-300 ease-in-out hover:shadow-xl">
-      <div className="px-6 py-3">
+    <nav className="fixed top-4 left-1/2 transform -translate-x-1/2 bg-white bg-opacity-50 backdrop-blur-md rounded-full shadow-lg transition-all duration-300 ease-in-out hover:shadow-xl">
+      <div className="flex items-center px-6 py-3">
+        <img 
+          src="https://2020.hackillinois.org/static/media/logo.01347610.svg" 
+          alt="HackIllinois Logo" 
+          className="h-8 w-auto mr-4"
+        />
+        <div className="h-6 w-px bg-gray-300 mr-4"></div>
         <ul className="flex space-x-6">
           <li>
             <Link to="/" className="text-gray-700 hover:text-gray-900 transition-colors duration-200">Home</Link>
