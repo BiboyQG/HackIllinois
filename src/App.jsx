@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { fetchEvents, notifyFetchSuccess } from './utils';
 import './App.css'
+import NavBar from './components/NavBar/NavBar';
 import DaySelector from './components/DaySelector/DaySelector';
 import DayPage from './components/DayPage/DayPage';
 import EventDetails from './components/EventDetails/EventDetails';
@@ -23,7 +24,8 @@ function App() {
   return (
     <Router>
       <div className="app max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="py-8">
+        <NavBar />
+        <div className="py-8 mt-16">
           <Routes>
             <Route path="/" element={
               <div className="flex">
