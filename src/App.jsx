@@ -19,13 +19,15 @@ function App() {
   }, []);
 
   return (
-    <div className="app">
-      <DaySelector 
-        events={events} 
-        selectedDay={selectedDay} 
-        onDaySelect={setSelectedDay} 
-      />
-      <DayPage selectedDay={selectedDay} events={events} />
+    <div className="app max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="py-8">
+        <DaySelector 
+          events={events} 
+          selectedDay={selectedDay} 
+          onDaySelect={setSelectedDay} 
+        />
+        <DayPage selectedDay={selectedDay} events={events} />
+      </div>
     </div>
   )
 }
