@@ -1,8 +1,14 @@
 import PropTypes from 'prop-types';
 import EventList from '../EventList/EventList';
 
-function DayPage({ selectedDay, events, currentMonth}) {
-  const filteredEvents = events.filter(event => new Date(event.startTime * 1000).getDate() === selectedDay);
+function DayPage({ selectedDay, events }) {
+  const filteredEvents = events
+    .filter(event => new Date(event.startTime * 1000).getDate() === selectedDay)
+    .sort((a, b) => a.startTime - b.startTime);
+
+  const currentMonth = filteredEvents.length > 0 
+    ? new Date(filteredEvents[0].startTime * 1000).toLocaleString('default', { month: 'long' })
+    : '';
 
   return (
     <div className="bg-gray-100 min-h-screen py-8">
@@ -14,7 +20,7 @@ function DayPage({ selectedDay, events, currentMonth}) {
           <EventList events={filteredEvents} />
         ) : (
           <div className="bg-white rounded-lg shadow-md p-4 sm:p-8 text-center">
-            <p className="text-lg sm:text-xl text-gray-600">No events scheduled for this day</p>
+            <p className="text-lg sm:text-xl text-gray-600">No events scheduled for today</p>
           </div>
         )}
       </div>
@@ -23,7 +29,6 @@ function DayPage({ selectedDay, events, currentMonth}) {
 }
 
 DayPage.propTypes = {
-  currentMonth: PropTypes.string.isRequired,
   selectedDay: PropTypes.number.isRequired,
   events: PropTypes.arrayOf(PropTypes.shape({
     eventId: PropTypes.string.isRequired,

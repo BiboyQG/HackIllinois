@@ -1,9 +1,14 @@
 import PropTypes from 'prop-types';
 
-function DaySelector({ events, selectedDay, onDaySelect, currentMonth }) {
-  const currentDate = new Date();
-  const year = currentDate.getFullYear();
-  const month = currentDate.getMonth();
+function DaySelector({ events, selectedDay, onDaySelect }) {
+  const earliestEvent = events.reduce((earliest, event) => 
+    event.startTime < earliest.startTime ? event : earliest
+  , events[0] || { startTime: Date.now() / 1000 });
+
+  const eventDate = new Date(earliestEvent.startTime * 1000);
+  const year = eventDate.getFullYear();
+  const month = eventDate.getMonth();
+  const currentMonth = eventDate.toLocaleString('default', { month: 'long' });
 
   const getDaysInMonth = (year, month) => {
     return new Date(year, month + 1, 0).getDate();
@@ -55,7 +60,6 @@ DaySelector.propTypes = {
   })).isRequired,
   selectedDay: PropTypes.number.isRequired,
   onDaySelect: PropTypes.func.isRequired,
-  currentMonth: PropTypes.string.isRequired,
 };
 
 export default DaySelector;
