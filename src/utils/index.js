@@ -7,10 +7,8 @@ const notifyFetchFailure = (err) => toast.error("Error while fetching events dat
 
 export function fetchEvents() {
   return axios.get('/event/')
-      .then(({ data }) => {
-        console.log(data);
-        console.log("fetch success");
-        return data;
+    .then(({ data }) => {
+      return data;
     })
     .catch(error => {
       throw error;
