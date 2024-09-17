@@ -19,7 +19,7 @@ function EventDetails({ events }) {
 
   return (
     <AniCon>
-      <div className="bg-white rounded-lg shadow-md p-6 max-w-2xl mx-auto">
+      <div className="solid-bg rounded-lg shadow-md p-6 max-w-2xl mx-auto">
         <h2 className="text-2xl font-bold mb-4">{event.name}</h2>
         <p className="text-gray-600 mb-4">{event.description}</p>
         <div className="grid grid-cols-2 gap-4 mb-4">

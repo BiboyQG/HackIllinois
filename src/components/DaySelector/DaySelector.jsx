@@ -21,7 +21,7 @@ function DaySelector({ events, selectedDay, onDaySelect }) {
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-md p-5 mb-6 sticky top-20">
+    <div className="solid-bg rounded-lg shadow-md p-5 mb-6 sticky top-20">
       <h2 className="text-xl font-semibold text-gray-800 mb-4">{currentMonth}</h2>
       <div className="grid grid-cols-7 gap-2">
         {daysInMonth.map(day => {
