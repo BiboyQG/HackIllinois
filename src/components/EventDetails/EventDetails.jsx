@@ -50,6 +50,7 @@ function EventDetails({ events }) {
               endTime={formatTime(endDate)}
               timeZone="America/Los_Angeles"
               trigger="click"
+              hideBackground={true}
             />
           </div>
           <Link to="/" className="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700 text-center w-[185px] transition-all duration-300 shadow-md hover:shadow-lg">

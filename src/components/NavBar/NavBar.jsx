@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 function NavBar() {
   return (
-    <nav className="fixed top-4 left-1/2 transform -translate-x-1/2 bg-white bg-opacity-50 backdrop-blur-md rounded-full shadow-lg transition-all duration-300 ease-in-out hover:shadow-xl">
+    <nav className="fixed top-4 left-1/2 transform -translate-x-1/2 bg-white bg-opacity-50 backdrop-blur-md rounded-full shadow-lg transition-all duration-300 ease-in-out hover:shadow-xl z-50">
       <div className="flex items-center px-6 py-3">
         <a href="https://hype.hackillinois.org/" target="_blank" rel="noopener noreferrer">
           <img
