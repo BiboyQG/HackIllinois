@@ -4,11 +4,13 @@ function NavBar() {
   return (
     <nav className="fixed top-4 left-1/2 transform -translate-x-1/2 bg-white bg-opacity-50 backdrop-blur-md rounded-full shadow-lg transition-all duration-300 ease-in-out hover:shadow-xl">
       <div className="flex items-center px-6 py-3">
-        <img 
-          src="https://2020.hackillinois.org/static/media/logo.01347610.svg" 
-          alt="HackIllinois Logo" 
-          className="h-8 w-auto mr-4"
-        />
+        <a href="https://hype.hackillinois.org/" target="_blank" rel="noopener noreferrer">
+          <img
+            src="https://2020.hackillinois.org/static/media/logo.01347610.svg"
+            alt="HackIllinois Logo"
+            className="h-8 w-auto mr-4"
+          />
+        </a>
         <div className="h-6 w-px bg-gray-300 mr-4"></div>
         <ul className="flex space-x-6">
           <li>
