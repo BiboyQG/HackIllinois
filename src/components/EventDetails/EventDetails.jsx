@@ -12,7 +12,6 @@ function EventDetails({ events }) {
     return <div className="text-center text-2xl text-gray-600 mt-10">Event not found</div>;
   }
 
-  // Format date and time for AddToCalendarButton
   const startDate = new Date(event.startTime * 1000);
   const endDate = new Date(event.endTime * 1000);
   const formatDate = (date) => date.toISOString().split('T')[0];
@@ -20,11 +19,10 @@ function EventDetails({ events }) {
 
   return (
     <AniCon>
-      <div className="bg-white rounded-lg shadow-lg p-8 max-w-3xl mx-auto">
+      <div className="bg-white rounded-lg shadow-lg p-8 max-w-2xl mx-auto">
         <h2 className="text-3xl font-bold mb-6 text-indigo-700">{event.name}</h2>
         <p className="text-gray-600 mb-8 text-lg">{event.description}</p>
-        
-        <div className="grid md:grid-cols-2 gap-2 mb-5">
+        <div className="grid md:grid-cols-2 gap-4 mb-2">
           <div className="space-y-4">
             <DetailItem icon={<FaCalendarAlt />} label="Date" value={startDate.toLocaleDateString()} />
             <DetailItem icon={<FaClock />} label="Time" value={`${startDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} - ${endDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`} />
@@ -36,11 +34,11 @@ function EventDetails({ events }) {
             <DetailItem icon={<FaSync />} label="Async" value={event.isAsync ? 'Yes' : 'No'} />
           </div>
         </div>
-        
+
         {event.mapImageUrl && (
           <img src={event.mapImageUrl} alt="Event Location Map" className="w-[80%] mb-5 mx-auto" />
         )}
-        
+
         <div className="flex flex-col items-center space-y-6">
           <AddToCalendarButton
             className="transition-all duration-300 transform hover:scale-105"
@@ -53,6 +51,7 @@ function EventDetails({ events }) {
             endTime={formatTime(endDate)}
             timeZone="America/Los_Angeles"
             trigger="click"
+            buttonStyle="round"
           />
           <Link to="/" className="bg-indigo-600 text-white px-6 py-3 rounded-full hover:bg-indigo-700 text-center transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105">
             Return to Main Page
