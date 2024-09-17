@@ -4,7 +4,6 @@ import EventItem from '../EventItem/EventItem';
 function EventList({ events }) {
   return (
     <div className="max-w-3xl mx-auto">
-      <h2 className="text-xl sm:text-2xl font-bold text-gray-800 mb-4 sm:mb-6">Events</h2>
       <div className="space-y-4">
         {events.map(event => (
           <EventItem key={event.eventId} event={event} />
