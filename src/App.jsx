@@ -27,14 +27,14 @@ function App() {
           <Routes>
             <Route path="/" element={
               <div className="flex">
-                <div className="w-[23%] pr-4">
+                <div className="w-[25%] pr-4">
                   <DaySelector 
                     events={events} 
                     selectedDay={selectedDay} 
                     onDaySelect={setSelectedDay} 
                   />
                 </div>
-                <div className="w-[77%] pl-4">
+                <div className="w-[75%] pl-4">
                   <DayPage selectedDay={selectedDay} events={events} />
                 </div>
               </div>

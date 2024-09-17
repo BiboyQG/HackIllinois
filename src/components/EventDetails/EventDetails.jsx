@@ -1,6 +1,6 @@
 import { useParams, Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-
+import AniCon from '../AniCon/AniCon';
 function EventDetails({ events }) {
   const { eventId } = useParams();
   const event = events.find(e => e.eventId === eventId);
@@ -10,6 +10,7 @@ function EventDetails({ events }) {
   }
 
   return (
+    <AniCon>
     <div className="bg-white rounded-lg shadow-md p-6 max-w-2xl mx-auto">
       <h2 className="text-2xl font-bold mb-4">{event.name}</h2>
       <p className="text-gray-600 mb-4">{event.description}</p>
@@ -32,6 +33,7 @@ function EventDetails({ events }) {
         Return to Main Page
       </Link>
     </div>
+    </AniCon>
   );
 }
 

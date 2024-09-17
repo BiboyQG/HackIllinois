@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import EventList from '../EventList/EventList';
+import AniCon from '../AniCon/AniCon';
 
 function DayPage({ selectedDay, events }) {
   const filteredEvents = events
@@ -11,9 +12,10 @@ function DayPage({ selectedDay, events }) {
     : '';
 
   return (
-    <div className="bg-gray-100 min-h-screen py-8">
-      <div className="max-w-4xl mx-auto px-4">
-        <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6">
+    <AniCon>
+      <div className="bg-gray-100 min-h-screen py-8">
+        <div className="max-w-4xl mx-auto px-4">
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6">
           Events for {currentMonth} {selectedDay}
         </h2>
         {filteredEvents.length > 0 ? (
@@ -24,7 +26,8 @@ function DayPage({ selectedDay, events }) {
           </div>
         )}
       </div>
-    </div>
+      </div>
+    </AniCon>
   );
 }
 

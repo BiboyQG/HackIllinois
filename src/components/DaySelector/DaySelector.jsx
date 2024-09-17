@@ -21,7 +21,7 @@ function DaySelector({ events, selectedDay, onDaySelect }) {
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-md p-4 mb-6">
+    <div className="bg-white rounded-lg shadow-md p-5 mb-6">
       <h2 className="text-xl font-semibold text-gray-800 mb-4">{currentMonth}</h2>
       <div className="grid grid-cols-7 gap-2 sm:gap-4">
         {daysInMonth.map(day => {
@@ -32,7 +32,7 @@ function DaySelector({ events, selectedDay, onDaySelect }) {
             <button
               key={day}
               className={`
-                w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center text-xs sm:text-sm font-medium
+                w-6 h-6 sm:w-6 sm:h-6 rounded-full flex items-center justify-center text-xs sm:text-xs font-medium
                 ${hasEvent ? 'hover:bg-indigo-100 cursor-pointer' : 'cursor-default text-gray-400'}
                 ${isSelected ? 'bg-indigo-600 text-white' : 'bg-gray-100'}
                 ${hasEvent && !isSelected ? 'text-indigo-600' : ''}
